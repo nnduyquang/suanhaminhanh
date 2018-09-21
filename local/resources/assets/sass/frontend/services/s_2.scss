@@ -1,0 +1,92 @@
+#s_2{
+  padding: 38px 0px;
+  h4{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 38px;
+    position: relative;
+    &:after{
+      position: absolute;
+      content: '';
+      width: 68px;
+      height: 3px;
+      background-color: $main-color;
+      transform: skewX(20deg);
+      bottom: -8px;
+      left: 0;
+    }
+    &:before{
+      position: absolute;
+      content: '';
+      width: 48px;
+      height: 3px;
+      background-color: #1b1e21;
+      transform: skewX(20deg);
+      bottom: -8px;
+      left: 70px;
+    }
+    span{
+      color: red;
+    }
+  }
+
+  .dich-vu {
+    width: 96%;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    margin-bottom: 20px;
+    border-top: 3px solid $main-color;
+    transition: .3s;
+    &:hover {
+      background-color: $main-color;
+      border-top: 3px solid #1b1e21;
+      i {
+        color: white;
+      }
+      h5 {
+        color: white;
+      }
+      p {
+        color: white;
+      }
+
+      .btn-chitiet {
+        opacity: 1;
+      }
+    }
+    i {
+      padding: 20px 0px;
+      font-size: 38px;
+      color: $main-color;
+      transition: .3s;
+      margin-top: 20px;
+    }
+    h5 {
+      font-size: 14px;
+      font-weight: bold;
+      transition: .3s;
+    }
+    p {
+      margin: 16px 0px;
+      font-size: 14px;
+      padding: 0px 10px;
+      line-height: 18px;
+      transition: .3s;
+    }
+    .btn-chitiet {
+      //margin-top: 16px;
+      padding-bottom: 68px;
+      opacity: 0;
+      transition: .3s;
+      a {
+        font-size: 14px;
+        padding: 8px 20px;
+        background-color: #1b1e21;
+        color: white;
+        border-radius: 3px;
+      }
+    }
+
+  }
+}

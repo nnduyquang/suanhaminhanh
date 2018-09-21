@@ -1,0 +1,63 @@
+#h_4 {
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 38px 0px;
+  background-attachment: fixed;
+  h5 {
+    font-size: 32px;
+    line-height: 42px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    width: fit-content;
+    width: auto;
+    padding: 20px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      width: 130px;
+      height: 80%;
+      transform: translateX(-50%);
+      border: 8px solid rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  span {
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+  }
+
+  p {
+    width: 90%;
+    margin: auto;
+    color: white;
+    line-height: 22px;
+    margin-top: 30px;
+    margin-bottom: 38px;
+  }
+
+  .btn-call {
+    background-color: $main-color;
+    width: 218px;
+    height: fit-content;
+    margin: auto;padding: 10px 0px;
+    transition: .3s;
+    &:hover{
+      background-color: #1b1e21;
+    }
+    a {
+      //width: 186px;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      //background-color: $main-color;
+      padding: 6px 0px;
+    }
+  }
+}
