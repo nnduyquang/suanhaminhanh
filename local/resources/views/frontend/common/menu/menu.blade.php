@@ -17,7 +17,19 @@
                             <ul>
                                 <li><a class="{{request()->is('/') ? 'active' : '/' }}" href="{{URL::asset('/')}}">TRANG CHỦ</a></li>
                                 <li><a class="{{request()->is('du-an*') ? 'active' : '/' }}" href="{{URL::asset('du-an.html')}}">DỰ ÁN</a></li>
-                                <li><a class="{{request()->is('dich-vu*') ? 'active' : '/' }}" href="{{URL::asset('dich-vu.html')}}">DỊCH VỤ</a></li>
+                                <li class="dich-vu-overlay">
+                                    <a class="{{request()->is('dich-vu*') ? 'active' : '/' }}" href="{{URL::asset('dich-vu.html')}}">DỊCH VỤ</a>
+                                    <div class="dv-content sub-menu">
+                                        <ul>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SƠN NƯỚC</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CHỦA NHÀ</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">CHỐNG THẤM</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">TRẦN THẠCH CAO</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CỬA SẮT</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CỬA NHÔM, KÍNH</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <li><a class="{{request()->is('tin-tuc*') ? 'active' : '/' }}" href="{{URL::asset('tin-tuc.html')}}">TIN TỨC</a></li>
                                 <li><a class="{{request()->is('gioi-thieu*') ? 'active' : '/' }}" href="{{URL::asset('gioi-thieu-minh-anh.html')}}">GIỚI THIỆU</a></li>
                                 <li><a class="{{request()->is('lien-he*') ? 'active' : '/' }}" href="{{URL::asset('lien-he.html')}}">LIÊN HỆ</a></li>

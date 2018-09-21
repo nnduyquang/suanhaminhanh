@@ -425,6 +425,34 @@ This class is added to the container
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  position: relative;
+}
+
+#menu .logo-menu .menu-top ul li .sub-menu {
+  background-color: #fff;
+  position: absolute;
+  z-index: 0;
+  top: 120%;
+  left: 0;
+  padding-top: 28px;
+  padding-bottom: 8px;
+  opacity: 0;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+#menu .logo-menu .menu-top ul li .sub-menu ul {
+  margin: auto;
+}
+
+#menu .logo-menu .menu-top ul li .sub-menu ul li {
+  min-width: 200px;
+  border-bottom: 1px solid #7a7a7a;
+  margin: 0px 3px;
+}
+
+#menu .logo-menu .menu-top ul li .sub-menu ul li a {
+  min-width: 100px;
 }
 
 #menu .logo-menu .menu-top ul li a {
@@ -442,6 +470,12 @@ This class is added to the container
 
 #menu .logo-menu .menu-top ul li a.active {
   color: #ba0000;
+}
+
+#menu .logo-menu .menu-top ul li.dich-vu-overlay:hover .sub-menu {
+  top: 100%;
+  z-index: 12;
+  opacity: 1;
 }
 
 #h_1 {
