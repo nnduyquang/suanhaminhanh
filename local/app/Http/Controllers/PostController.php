@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Repositories\Backend\Post\PostRepositoryInterface;
@@ -20,7 +19,7 @@ class PostController extends Controller
     }
     public function index(Request $request)
     {
-        $posts = $this->postRepository->getAllPostOrderById();
+        $posts = $this->postRepository->getAllPostByTypeOrderById();
         return view('backend.admin.post.index', compact('posts'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -32,7 +31,8 @@ class PostController extends Controller
     public function create()
     {
         $data=$this->postRepository->showCreatePost();
-        return view('backend.admin.post.create', compact('roles', 'data'));
+        $categoryPost = $data['categoryPost'];
+        return view('backend.admin.post.create', compact('roles', 'categoryPost'));
     }
 
     /**
@@ -43,8 +43,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $posts = $this->postRepository->createNewPostWithSeoId($request);
-        return redirect()->route('post.index')->with('success', 'Tạo Mới Thành Công Bài Viết');
+        $data = $this->postRepository->createNewPostWithSeoId($request);
+        return redirect()->route('post.index');
     }
 
     /**
@@ -66,9 +66,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-//        $post = $this->postRepository->getPostById($id);
         $data=$this->postRepository->showEditPost($id);
-        return view('backend.admin.post.edit', compact('data'));
+        $categoryPost = $data['categoryPost'];
+        $post=$data['post'];
+        return view('backend.admin.post.edit', compact('categoryPost','post'));
     }
 
     /**
@@ -80,8 +81,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $posts = $this->postRepository->updateNewPost($request,$id);
-        return redirect()->route('post.index')->with('success', 'Cập Nhật Thành Công Bài Viết');
+        $data = $this->postRepository->updatePost($request,$id);
+        return redirect()->route('post.index');
     }
 
     /**
@@ -92,8 +93,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $this->postRepository->deletePost($id);
-        return redirect()->route('post.index')
-            ->with('success', 'Đã Xóa Thành Công');
+        $data=$this->postRepository->deletePost($id);
+        return redirect()->route('post.index');
     }
 }

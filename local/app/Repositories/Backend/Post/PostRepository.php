@@ -3,7 +3,6 @@
 namespace App\Repositories\Backend\Post;
 
 use App\CategoryItem;
-use App\Product;
 use App\Repositories\EloquentRepository;
 use App\Seo;
 use Illuminate\Support\Facades\Auth;
@@ -15,67 +14,63 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
         return \App\Post::class;
     }
 
-    public function getAllPostOrderById()
+    public function getAllPostByTypeOrderById()
     {
         return $this->_model::where('post_type', '=', IS_POST)->orderBy('id', 'DESC')->get();
     }
 
     public function showCreatePost()
     {
-        $data=[];
-        $category=new CategoryItem();
-        $product=new Product();
-        $dd_categorie_posts = $category->getArrayCategory('create');
-        $data['dd_categorie_posts']=$dd_categorie_posts;
-        $products=$product->getAllProductActiveOrderById();
-        $data['products']=$products;
-
+        $data = [];
+        $categoryItem = new CategoryItem();
+        $categoryPost = $categoryItem->getAllParent('order', CATEGORY_POST);
+        $data['categoryPost'] = $categoryPost;
         return $data;
     }
 
     public function showEditPost($id)
     {
-        $data=[];
-        $category=new CategoryItem();
-        $product=new Product();
-        $dd_categorie_posts = $category->getArrayCategory('edit');
-        $data['dd_categorie_posts']=$dd_categorie_posts;
-        $products=$product->getAllProductActiveOrderById();
-        $data['products']=$products;
-        $post=$this->find($id);
-        $data['post']=$post;
+        $data = [];
+        $data['post'] = $this->find($id);
+        $categoryItem = new CategoryItem();
+        $categoryPost = $categoryItem->getAllParent('order', CATEGORY_POST);
+        $data['categoryPost'] = $categoryPost;
         return $data;
     }
 
 
     public function createNewPostWithSeoId($request)
     {
+        $data = [];
         $seo = Seo::create($request->all());
-        if(!$request->has('isActive'))
-            $request->request->add(['isActive' => null]);
         $request->request->add(['seo_id' => $seo->id]);
-        $request->request->add(['post_type' => IS_POST]);
-        $request->request->add(['path' => '']);
-        $request->request->add(['user_id' => Auth::user()->id]);
-        $post = $this->create($request->all());
-        $post->categoryitems()->attach($request->input('list_category_id'));
-        return true;
+        $parameters = $this->_model->prepareParameters($request);
+        $result = $this->_model->create($parameters->all());
+        $attachData = array();
+        foreach ($parameters['list_category_id'] as $key => $item) {
+            $attachData[$item] = array('type' => CATEGORY_POST);
+        }
+        $result->categoryitems(CATEGORY_POST)->attach($attachData);
+        return $data;
+
     }
 
-    public function updateNewPost($request,$id)
+    public function updatePost($request, $id)
     {
-        if(!$request->has('isActive'))
-            $request->request->add(['isActive' => null]);
-        $request->request->add(['path' => '']);
-        $post=$this->update($id,$request->all());
-        $post->categoryitems()->sync($request->input('list_category_id'));
-        $post->seos->update($request->all());
-        return true;
+        $data = [];
+        $parameters = $this->_model->prepareParameters($request);
+        $result = $this->update($id, $parameters->all());
+        $result->seos->update($parameters->all());
+        $syncData = array();
+        $result->categoryitems(CATEGORY_POST)->sync($syncData);
+        return $data;
     }
 
-    public function deletePost($id){
+    public function deletePost($id)
+    {
+        $data = [];
         $this->delete($id);
-        return true;
+        return $data;
     }
 
 

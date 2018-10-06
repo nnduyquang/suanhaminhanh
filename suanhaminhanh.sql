@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 14, 2018 lúc 12:32 PM
+-- Thời gian đã tạo: Th10 06, 2018 lúc 06:06 AM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.0.29
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `startproject`
+-- Cơ sở dữ liệu: `suanhaminhanh`
 --
 
 -- --------------------------------------------------------
@@ -50,11 +50,8 @@ CREATE TABLE `category_items` (
 --
 
 INSERT INTO `category_items` (`id`, `name`, `path`, `description`, `image`, `image_mobile`, `level`, `parent_id`, `type`, `order`, `isActive`, `created_at`, `updated_at`, `seo_id`) VALUES
-(1, 'Test 1', 'test-1', '<p>\r\n	Test 1\r\n</p>', 'images/uploads/images/gt_1.jpg', NULL, 0, NULL, 0, 1, 1, '2018-07-17 02:13:46', '2018-07-17 02:13:46', 1),
-(2, 'Test 2', 'test-2', '<p>\r\n	Test 2\r\n</p>', 'images/uploads/images/gt_1.jpg', NULL, 0, NULL, 0, 2, 1, '2018-07-17 02:14:03', '2018-07-17 02:14:03', 2),
-(3, 'Test 3', 'test-3', '<p>\r\n	Test 3\r\n</p>', 'images/uploads/images/gt_1.jpg', NULL, 0, NULL, 0, 3, 1, '2018-07-17 02:14:21', '2018-07-17 02:14:21', 3),
-(4, 'test1-1', 'test1-1', '<p>\r\n	test1-1\r\n</p>', 'images/uploads/images/gt_1.jpg', NULL, 1, 1, 0, 5, 1, '2018-07-17 02:24:13', '2018-07-17 02:24:13', 4),
-(5, 'test 5', 'test-5', '<p>\r\n	test 5\r\n</p>', 'images/uploads/images/gt_1.jpg', NULL, 0, NULL, 0, 5, 1, '2018-07-17 02:32:23', '2018-07-17 02:32:23', 5);
+(6, 'Dịch Vụ', 'dich-vu', NULL, NULL, NULL, 0, NULL, 0, 1, 1, '2018-10-06 02:48:13', '2018-10-06 02:48:13', 13),
+(7, 'Dự Án', 'du-an', NULL, NULL, NULL, 0, NULL, 0, 1, 1, '2018-10-06 02:48:21', '2018-10-06 02:48:21', 14);
 
 -- --------------------------------------------------------
 
@@ -65,6 +62,7 @@ INSERT INTO `category_items` (`id`, `name`, `path`, `description`, `image`, `ima
 CREATE TABLE `category_many` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `item_id` int(10) UNSIGNED NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -73,10 +71,13 @@ CREATE TABLE `category_many` (
 -- Đang đổ dữ liệu cho bảng `category_many`
 --
 
-INSERT INTO `category_many` (`category_id`, `item_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2018-09-12 14:56:37', '2018-09-12 14:56:37'),
-(4, 1, '2018-09-13 02:48:34', '2018-09-13 02:48:34'),
-(5, 1, '2018-09-12 14:56:37', '2018-09-12 14:56:37');
+INSERT INTO `category_many` (`category_id`, `item_id`, `type`, `created_at`, `updated_at`) VALUES
+(6, 2, 0, '2018-10-06 02:48:49', '2018-10-06 02:48:49'),
+(6, 3, 0, '2018-10-06 02:49:03', '2018-10-06 02:49:03'),
+(6, 4, 0, '2018-10-06 02:49:42', '2018-10-06 02:49:42'),
+(6, 5, 0, '2018-10-06 02:50:26', '2018-10-06 02:50:26'),
+(6, 6, 0, '2018-10-06 02:50:52', '2018-10-06 02:50:52'),
+(6, 7, 0, '2018-10-06 02:51:15', '2018-10-06 02:51:15');
 
 -- --------------------------------------------------------
 
@@ -293,7 +294,7 @@ CREATE TABLE `posts` (
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `post_type` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `isActive` tinyint(1) NOT NULL DEFAULT '1',
@@ -309,7 +310,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `path`, `description`, `content`, `image`, `post_type`, `isActive`, `category_item_id`, `user_id`, `created_at`, `updated_at`, `seo_id`) VALUES
-(1, 'test aaa', 'test-aaa', '<p>\r\n	test aaa\r\n</p>', '<p>\r\n	test aaa\r\n</p>', 'images/uploads/images/gt_1.jpg', 1, 1, NULL, 1, '2018-09-12 14:56:37', '2018-09-12 14:56:37', 12);
+(2, 'Sơn Nước', 'son-nuoc', '<p>\r\n	Sơn Nước\r\n</p>', '<p>\r\n	Sơn Nước\r\n</p>', NULL, 1, 1, NULL, 1, '2018-10-06 02:48:49', '2018-10-06 02:48:49', 15),
+(3, 'Sửa Chữa Nhà', 'sua-chua-nha', '<p>\r\n	Sửa Chữa Nhà\r\n</p>', '<p>\r\n	Sửa Chữa Nhà\r\n</p>', NULL, 1, 1, NULL, 1, '2018-10-06 02:49:03', '2018-10-06 02:49:03', 16),
+(4, 'Chống Thấm', 'chong-tham', '<p>\r\n	Chống Thấm\r\n</p>', '<p>\r\n	Chống Thấm\r\n</p>', NULL, 1, 1, NULL, 1, '2018-10-06 02:49:42', '2018-10-06 02:49:42', 18),
+(5, 'Trần Thạch Cao', 'tran-thach-cao', NULL, NULL, NULL, 1, 1, NULL, 1, '2018-10-06 02:50:26', '2018-10-06 02:50:26', 19),
+(6, 'Sửa Cửa Sắt', 'sua-cua-sat', NULL, NULL, NULL, 1, 1, NULL, 1, '2018-10-06 02:50:52', '2018-10-06 02:50:52', 20),
+(7, 'Sửa Cửa Nhôm, Kính', 'sua-cua-nhom-kinh', NULL, NULL, NULL, 1, 1, NULL, 1, '2018-10-06 02:51:15', '2018-10-06 02:51:15', 21);
 
 -- --------------------------------------------------------
 
@@ -397,17 +403,20 @@ CREATE TABLE `seos` (
 --
 
 INSERT INTO `seos` (`id`, `seo_title`, `seo_description`, `seo_keywords`, `created_at`, `updated_at`) VALUES
-(1, 'Test 1', 'Test 1', 'Test 1', '2018-07-17 02:13:46', '2018-07-17 02:13:46'),
-(2, 'Test 2', 'Test 2', 'Test 2', '2018-07-17 02:14:03', '2018-07-17 02:14:03'),
-(3, 'Test 3', 'Test 3', 'Test 3', '2018-07-17 02:14:21', '2018-07-17 02:14:21'),
-(4, 'test1-1', 'test1-1', 'test1,1', '2018-07-17 02:24:13', '2018-07-17 02:24:13'),
-(5, 'test 5', 'test 5', 'test 5', '2018-07-17 02:32:23', '2018-07-17 02:32:23'),
 (6, 'test bài viết', 'test bài viết', 'test bài viết', '2018-07-17 03:13:47', '2018-07-17 03:13:47'),
 (8, NULL, NULL, NULL, '2018-09-12 14:36:28', '2018-09-12 14:36:28'),
 (9, NULL, NULL, NULL, '2018-09-12 14:50:50', '2018-09-12 14:50:50'),
 (10, NULL, NULL, NULL, '2018-09-12 14:53:02', '2018-09-12 14:53:02'),
 (11, NULL, NULL, NULL, '2018-09-12 14:54:14', '2018-09-12 14:54:14'),
-(12, NULL, NULL, NULL, '2018-09-12 14:56:37', '2018-09-12 14:56:37');
+(13, NULL, NULL, NULL, '2018-10-06 02:48:13', '2018-10-06 02:48:13'),
+(14, NULL, NULL, NULL, '2018-10-06 02:48:21', '2018-10-06 02:48:21'),
+(15, NULL, NULL, NULL, '2018-10-06 02:48:49', '2018-10-06 02:48:49'),
+(16, NULL, NULL, NULL, '2018-10-06 02:49:03', '2018-10-06 02:49:03'),
+(17, NULL, NULL, NULL, '2018-10-06 02:49:31', '2018-10-06 02:49:31'),
+(18, NULL, NULL, NULL, '2018-10-06 02:49:42', '2018-10-06 02:49:42'),
+(19, NULL, NULL, NULL, '2018-10-06 02:50:26', '2018-10-06 02:50:26'),
+(20, NULL, NULL, NULL, '2018-10-06 02:50:52', '2018-10-06 02:50:52'),
+(21, NULL, NULL, NULL, '2018-10-06 02:51:14', '2018-10-06 02:51:14');
 
 -- --------------------------------------------------------
 
@@ -548,7 +557,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `category_items`
 --
 ALTER TABLE `category_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `category_permissions`
@@ -584,7 +593,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -602,7 +611,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `seos`
 --
 ALTER TABLE `seos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
