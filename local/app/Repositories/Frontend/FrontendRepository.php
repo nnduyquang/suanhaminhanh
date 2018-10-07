@@ -10,191 +10,109 @@ use App\Product;
 
 class FrontendRepository implements FrontendRepositoryInterface
 {
-    public function getAllSidebar()
-    {
-        $sidebar = [];
-//        $categoryPosts = CategoryItem::where('type', 0)->get();
-        $categoryProducts = CategoryItem::where('type', 1)->where('isActive', 1)->orderBy('order')->get();
-//        $sidebar['categoryPosts'] = $categoryPosts;
-        $sidebar['categoryProducts'] = $categoryProducts;
-        return $sidebar;
-    }
 
-
-    public function getServiceByCategory($path)
-    {
-        $data = [];
-        $categoryPost = CategoryItem::where('path', $path)->first();
-        $posts = Post::where('category_post_id', $categoryPost->id)->get();
-        $page = Post::find($categoryPost->page_id);
-        $data['categoryPost'] = $categoryPost;
-        $data['posts'] = $posts;
-        $data['page'] = $page;
-        return $data;
-    }
-
-    public function getAllListCategoryAndProduct()
-    {
-        $categoryProducts = CategoryItem::where('type', 1)->where('level', 0)->where('isActive', 1)->orderBy('order')->get();
-        foreach ($categoryProducts as $key => $data) {
-            $products = Product::whereIn('category_product_id', function ($query) use ($data) {
-                $query->select('id')->from(with(new CategoryItem)->getTable())->where('parent_id', $data->id);
-            })->orderBy('id', 'DESC')->take(8)->get();
-            if (count($products) == 0) {
-                unset($categoryProducts[$key]);
-            } else {
-                $data->listProduct = $products;
-            }
-        }
-        $news = Post::where('post_type', function ($query) {
-            $query->select('id')->from(with(new CategoryItem)->getTable())->where('path', 'cong-trinh-mau');
-        })->take(3)->get();
-        foreach ($news as $key => $item) {
-            $item->description = cat_chuoi_dai_thanh_ngan(loai_bo_html_tag($item->description), 90);
-        }
-        $data['categoryProducts'] = $categoryProducts;
-        $data['news'] = $news;
-        return $data;
-    }
-
-    public function getProductInfo($productPath)
-    {
-        $data = [];
-        $product = Product::where('path', $productPath)->first();
-        $product->price = number_format($product->price, 0, ',', '.');
-        $product->final_price = number_format($product->final_price, 0, ',', '.');
-        $orther = Product::where('category_product_id', $product->category_product_id)->where('id', '!=', $product->id)->get();
-        foreach ($orther as $key => $data) {
-            $data->price = number_format($data->price, 0, ',', '.');
-            $data->final_price = number_format($data->final_price, 0, ',', '.');
-        }
-        $data['product'] = $product;
-        $data['orther'] = $orther;
-        return $data;
-    }
-
-    public function getServiceInfo($categoryPath, $servicePath)
-    {
-        $data = [];
-        $service = Post::where('path', $servicePath)->first();
-        $orther = Post::where('category_post_id', $service->category_post_id)->where('id', '!=', $service->id)->get();
-        $data['service'] = $service;
-        $data['orther'] = $orther;
-        return $data;
-    }
 
     public function getFrontEndInfo()
     {
         $data = [];
-        $configContact = Config::where('name', 'config-contact')->first();
-        $data['configContact'] = $configContact;
-        $categoryMain = CategoryItem::where('type', CATEGORY_PRODUCT)->where('level', MENU_GOC)->get();
-        $data['categoryMain'] = $categoryMain;
         return $data;
     }
 
-    public function getMainPage($path)
-    {
-        $page = Post::where('path', $path)->get();
-        return $page;
-    }
-
-    public function getSearch($keySearch)
+    public function getFrontend()
     {
         $data = [];
-        $keySearch = preg_replace('/\s+/', ' ', $keySearch);
-        $products = Product::where('name', 'like', '%' . $keySearch . '%')->orderBy('id', 'DESC')->get();
-        $data['products'] = $products;
-        $data['key-search'] = $keySearch;
-        return $data;
-    }
-
-    public function getProductByCategoryMain($path)
-    {
-        $data = [];
-        $categoryMain = CategoryItem::where('path', $path)->first();
-        $categorySub = CategoryItem::where('parent_id', $categoryMain->id)->get();
-        $products = $products = Product::whereIn('category_product_id', function ($query) use ($categoryMain) {
-            $query->select('id')->from(with(new CategoryItem)->getTable())->where('parent_id', $categoryMain->id);
-        })->orderBy('id', 'DESC')->get();
-        foreach ($products as $key => $data) {
-            $data->price = number_format($data->price, 0, ',', '.');
-            $data->final_price = number_format($data->final_price, 0, ',', '.');
+        $post = new Post();
+        $categoryItem = new CategoryItem();
+        $services = $post->getAllPostByCategory(6);
+        $service = $categoryItem->findCategoryById(6);
+        foreach ($services as $key => $item) {
+            $item->description = cat_chuoi_dai_thanh_ngan($item->description, 75);
         }
-        $data['category'] = $categoryMain;
-        $data['categorySub'] = $categorySub;
-        $data['products'] = $products;
-        $data['type'] = 1;
-        return $data;
-    }
-
-    public function getProductByCategorySub($pathParent, $pathSub)
-    {
-        $data = [];
-        $categorySub = CategoryItem::where('path', $pathSub)->first();
-        $products = Product::where('category_product_id', $categorySub->id)->get();
-        foreach ($products as $key => $data) {
-            $data->price = number_format($data->price, 0, ',', '.');
-            $data->final_price = number_format($data->final_price, 0, ',', '.');
+        $news = $post->getAllPostByCategoryHasLimit(8, 3);
+        foreach ($news as $key => $item) {
+            $item->description = cat_chuoi_dai_thanh_ngan($item->description, 85);
         }
-        $data['category'] = $categorySub;
-        $data['categorySub'] = [];
-        $data['products'] = $products;
-        $data['type'] = 2;
-        return $data;
-    }
-
-    public function getPageContent($path)
-    {
-        $data = [];
-        $page = Post::where('path', $path)->first();
-        $data['page'] = $page;
-        return $data;
-    }
-
-    public function getCategoryPostContent($path)
-    {
-        $data = [];
-        $categoryPost = CategoryItem::where('path', $path)->first();
-        $posts = Post::where('post_type', $categoryPost->id)->get();
-        $categoryPost->posts = $posts;
-        $data['categoryPost'] = $categoryPost;
-        $data['type'] = 1;
-        return $data;
-    }
-
-    public function getPostDetail($pathParent, $pathSub)
-    {
-
-//        $categoryPost = CategoryItem::where('path', $pathParent)->first();
-        $post = Post::where('path', $pathSub)->first();
-        $data['post'] = $post;
-        $data['type'] = 2;
-        return $data;
-    }
-
-    public function getAllNews()
-    {
-        $data = [];
-        $newsMain = CategoryItem::where('path', 'tin-tuc')->first();
-        $news = Post::where('post_type', $newsMain->id)->get();
-        $data['newsMain'] = $newsMain;
         $data['news'] = $news;
-        $data['type'] = 1;
+        $data['services'] = $services;
+        $data['service'] = $service;
         return $data;
     }
 
-    public function getNewsDetail($path)
+    public function getDichVuDetail($path)
     {
         $data = [];
-        $news = Post::where('path', $path)->first();
-
-        $others = Post::where('post_type', function ($query) {
-            $query->select('id')->from(with(new CategoryItem)->getTable())->where('path', 'tin-tuc');
-        })->where('id', '!=', $news->id)->get();
+        $post = new Post();
+        $service = $post->getPostByCategoryAndPathPost(6, $path);
+        $other = $post->findPostOther(6, $service->id);
+        $news = $post->getAllPostByCategoryHasLimit(8, 3);
+        foreach ($news as $key => $item) {
+            $item->description = cat_chuoi_dai_thanh_ngan($item->description, 85);
+        }
         $data['news'] = $news;
-        $data['others'] = $others;
-        $data['type'] = 2;
+        $data['post'] = $service;
+        $data['other'] = $other;
+        return $data;
+    }
+
+    public function getAllTinTuc()
+    {
+        $data = [];
+        $post = new Post();
+        $news = $post->getAllPostByCategory(8);
+        foreach ($news as $key => $item) {
+            $item->description = cat_chuoi_dai_thanh_ngan($item->description, 85);
+        }
+        $data['news'] = $news;
+        return $data;
+    }
+
+    public function getTinTucDetail($path)
+    {
+        $data = [];
+        $post = new Post();
+        $news = $post->getPostByCategoryAndPathPost(8, $path);
+        $other = $post->findPostOtherHasTakeAndSort(8, $news->id, 5);
+        $data['post'] = $news;
+        $data['other'] = $other;
+        return $data;
+    }
+
+    public function getAllDichVu()
+    {
+        $data = [];
+        $post = new Post();
+        $services = $post->getAllPostByCategory(6);
+        $data['services'] = $services;
+        foreach ($services as $key => $item) {
+            $item->description = cat_chuoi_dai_thanh_ngan($item->description, 150);
+        }
+        return $data;
+    }
+
+    public function getAllDuAn()
+    {
+        $data = [];
+        $categoryItem = new CategoryItem();
+        $post = new Post();
+        $categoryChild=$categoryItem->getChildCategoryByParentId(7);
+        foreach ($categoryChild as $key => $item) {
+            $product = $post->getAllPostByCategory($item->id);
+            $item->product = $product;
+        }
+        $data['categoryChild'] = $categoryChild;
+
+        return $data;
+    }
+
+    public function getDuAnDetail($path)
+    {
+        $data = [];
+        $post = new Post();
+        $projects = $post->getPostByCategoryAndPathPost(7, $path);
+        $otherId=$projects->categoryitems(CATEGORY_POST)->where('id','!=',7)->first()->id;
+        $other = $post->findPostOtherHasTakeAndSort($otherId, $projects->id, 5);
+        $data['projects'] = $projects;
+        $data['other'] = $other;
         return $data;
     }
 

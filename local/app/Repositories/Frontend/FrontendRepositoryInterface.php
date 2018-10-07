@@ -4,33 +4,20 @@ namespace App\Repositories\Frontend;
 
 interface FrontendRepositoryInterface
 {
-    public function getAllSidebar();
-
-    public function getProductByCategoryMain($path);
-
-    public function getProductByCategorySub($pathParent, $pathSub);
-
-    public function getServiceByCategory($path);
-
-    public function getAllListCategoryAndProduct();
-
-    public function getProductInfo($productPath);
-
-    public function getServiceInfo($categoryPath, $servicePath);
+    public function getFrontend();
 
     public function getFrontEndInfo();
 
-    public function getMainPage($path);
+    public function getDichVuDetail($path);
 
-    public function getSearch($keySearch);
+    public function getAllTinTuc();
 
-    public function getPageContent($path);
+    public function getTinTucDetail($path);
 
-    public function getCategoryPostContent($path);
+    public function getAllDichVu();
 
-    public function getPostDetail($pathParent, $pathSub);
+    public function getAllDuAn();
 
-    public function getAllNews();
+    public function getDuAnDetail($path);
 
-    public function getNewsDetail($path);
 }

@@ -71,6 +71,12 @@
                         @endif
                     </div>
                 </div>
+                <div class="wrap-create-edit">
+                    <strong class="text-title-right">Icon</strong>
+                    <div class="form-group">
+                        {!! Form::text('icon',null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12 p-0">

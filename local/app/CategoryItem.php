@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryItem extends Model
 {
     protected $fillable = [
-        'name','path','description','image','image_mobile','level','parent_id','type','seo_id','order','isActive'
+        'name','path','description','image','image_mobile','level','parent_id','type','seo_id','order','is_active'
     ];
     protected $table = 'category_items';
     protected $hidden = ['id'];
@@ -24,42 +24,9 @@ class CategoryItem extends Model
         return $this->belongsToMany('App\Post','category_many','category_id','item_id')->withTimestamps();
     }
 
-    public function findAllChild($dd_categorie_posts, $parent_id = 0, &$newArray)
-    {
-        $dash = '';
-        foreach ($dd_categorie_posts as $key => $data) {
-            if ($data->parent_id == $parent_id) {
-                if ($data->level != 0) {
-                    for ($i = 0; $i <= $data->level; $i++)
-                        $dash = $dash . '---';
-                    $data->name = $dash . $data->name;
-                    $dash = '';
-                }
-                array_push($newArray, $data);
-                $dd_categorie_posts->forget($key);
-                self::findAllChild($dd_categorie_posts, $data->id, $newArray);
-            }
-        }
-    }
-
-    public function getArrayCategory($type)
-    {
-        $list_category = $this->where('type', CATEGORY_POST)->orderBy('order')->get();
-        $newArray = [];
-        self::findAllChild($list_category, 0, $newArray);
-        if ($type == 'create')
-//            return array_pluck($newArray, 'name', 'id');
-            return $newArray;
-        else {
-            $list_arr = array_pluck($newArray, 'name', 'id');
-            return array_map(function ($index, $value) {
-                return ['index' => $index, 'value' => $value];
-            }, array_keys($list_arr), $list_arr);
-        }
-    }
     public function prepareParameters($parameters,$type)
     {
-        if (!$parameters->has('isActive'))
+        if (!$parameters->has('is_active'))
             $parameters->request->add(['is_active' => null]);
         $parameters->request->add(['path' => '']);
         $parameters->request->add(['level' => 0]);
@@ -83,6 +50,12 @@ class CategoryItem extends Model
 
     public function findLevelById($id){
         return $this->where('id',$id)->first()->level;
+    }
+    public function findCategoryById($id){
+        return $this->where('id',$id)->first();
+    }
+    public function getChildCategoryByParentId($parent_id){
+        return $this->where('parent_id',$parent_id)->where('is_active', ACTIVE)->get();
     }
 
     public function getAllCategoryByType($type)

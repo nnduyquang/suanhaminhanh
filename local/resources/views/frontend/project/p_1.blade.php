@@ -13,12 +13,9 @@
                 <div class="text-center">
                     <div class="tab">
                         <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">All</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris')">Sơn nước</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Trần thạch cao</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris1')">Chống thấm</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo1')">Trần thạch cao</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris2')">Sửa chữa nhà</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo2')">Sửa chữa cửa sắt</button>
+                        @foreach($data['categoryChild'] as $key=>$item)
+                            <button class="tablinks" onclick="openCity(event, '{{$item->id}}')">{{$item->name}}</button>
+                        @endforeach
                     </div>
                 </div>
 
@@ -26,176 +23,50 @@
                     <div id="London" class="tabcontent">
 
                         <div class="row right">
-                            @for ($i = 0; $i < 12; $i++)
+                            @foreach($data['categoryChild'] as $key=>$item)
+                                @foreach($item->product as $key2=>$item2)
                                 <div class="col-md-3 text-center items-overlay">
                                     <div class="items wow fadeInUp"
-                                         style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
+                                         style="background-image:url({{URL::asset($item2->image)}});">
                                         <div class="content d-flex flex-column align-items-center justify-content-center">
 
-                                            <h5>PROJECT 1</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias
-                                                atque
-                                                beatae ex fuga.</p>
+                                            <h5>{{$item2->title}}</h5>
+                                            <p>{!! $item2->description !!}</p>
                                             <div class="btn-chitiet">
-                                                <a href="{{URL::asset('/du-an-chi-tiet.html')}}">CHI TIẾT</a>
+                                                <a href="{{URL::to('/du-an/'.$item2->path)}}">CHI TIẾT</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
+                                @endforeach
+                            @endforeach
 
                         </div>
 
                     </div>
+                    @foreach($data['categoryChild'] as $key=>$item)
 
-                    <div id="Paris" class="tabcontent">
+                        <div id="{{$item->id}}" class="tabcontent">
 
                         <div class="row  right">
-                            @for ($i = 0; $i < 12; $i++)
+                            @foreach($item->product as $key2=>$item2)
                                 <div class="col-md-3 text-center items-overlay">
                                     <div class="items wow fadeInUp"
-                                         style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
+                                         style="background-image:url({{URL::asset($item2->image)}});">
                                         <div class="content d-flex flex-column align-items-center justify-content-center">
 
-                                            <h5>PROJECT 1</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias
-                                                atque
-                                                beatae ex fuga.</p>
+                                            <h5>{{$item2->title}}</h5>
+                                            <p>{!! $item2->description !!}</p>
                                             <div class="btn-chitiet">
-                                                <a href="">CHI TIẾT</a>
+                                                <a href="{{URL::to('/du-an/'.$item2->path)}}">CHI TIẾT</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
-
-                        </div>
-
-                    </div>
-
-                    <div id="Tokyo" class="tabcontent">
-
-                        <div class="row  right">
-                            @for ($i = 0; $i < 12; $i++)
-                                <div class="col-md-3 text-center items-overlay">
-                                    <div class="items wow fadeInUp"
-                                         style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
-                                        <div class="content d-flex flex-column align-items-center justify-content-center">
-
-                                            <h5>PROJECT 1</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias
-                                                atque
-                                                beatae ex fuga.</p>
-                                            <div class="btn-chitiet">
-                                                <a href="">CHI TIẾT</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endfor
-
-                        </div>
-
-                        <div id="Paris1" class="tabcontent">
-
-                            <div class="row  right">
-                                @for ($i = 0; $i < 12; $i++)
-                                    <div class="col-md-3 text-center items-overlay">
-                                        <div class="items wow fadeInUp"
-                                             style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
-                                            <div class="content d-flex flex-column align-items-center justify-content-center">
-
-                                                <h5>PROJECT 1</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias
-                                                    atque
-                                                    beatae ex fuga.</p>
-                                                <div class="btn-chitiet">
-                                                    <a href="">CHI TIẾT</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endfor
-
-                            </div>
-
-                        </div>
-
-                        <div id="Tokyo1" class="tabcontent">
-
-                            <div class="row  right">
-                                @for ($i = 0; $i < 12; $i++)
-                                    <div class="col-md-3 text-center items-overlay">
-                                        <div class="items wow fadeInUp"
-                                             style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
-                                            <div class="content d-flex flex-column align-items-center justify-content-center">
-
-                                                <h5>PROJECT 1</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias
-                                                    atque
-                                                    beatae ex fuga.</p>
-                                                <div class="btn-chitiet">
-                                                    <a href="">CHI TIẾT</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endfor
-
-                            </div>
-
-                            <div id="Paris2" class="tabcontent">
-
-                                <div class="row  right">
-                                    @for ($i = 0; $i < 12; $i++)
-                                        <div class="col-md-3 text-center items-overlay">
-                                            <div class="items wow fadeInUp"
-                                                 style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
-                                                <div class="content d-flex flex-column align-items-center justify-content-center">
-
-                                                    <h5>PROJECT 1</h5>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad
-                                                        alias atque
-                                                        beatae ex fuga.</p>
-                                                    <div class="btn-chitiet">
-                                                        <a href="">CHI TIẾT</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endfor
-
-                                </div>
-
-                            </div>
-
-                            <div id="Tokyo2" class="tabcontent">
-
-                                <div class="row  right">
-                                    @for ($i = 0; $i < 12; $i++)
-                                        <div class="col-md-3 text-center items-overlay">
-                                            <div class="items wow fadeInUp"
-                                                 style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/project/project-3.jpg')}});">
-                                                <div class="content d-flex flex-column align-items-center justify-content-center">
-
-                                                    <h5>PROJECT 1</h5>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad
-                                                        alias atque
-                                                        beatae ex fuga.</p>
-                                                    <div class="btn-chitiet">
-                                                        <a href="">CHI TIẾT</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endfor
-
-                                </div>
-
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>

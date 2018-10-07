@@ -1,9 +1,8 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
+
+Route::get('/', 'FrontendController@getFrontend');
 
 Route::get('/gioi-thieu-minh-anh.html', function () {
     return view('frontend.about-us.index');
@@ -13,27 +12,21 @@ Route::get('/lien-he.html', function () {
     return view('frontend.contact.index');
 });
 
-Route::get('/tin-tuc.html', function () {
-    return view('frontend.news.index');
-});
 
-Route::get('/tin-tuc-chi-tiet.html', function () {
-    return view('frontend.news-detail.index');
-});
-Route::get('/du-an.html', function () {
-    return view('frontend.project.index');
-});
+Route::get('/tin-tuc.html', 'FrontendController@getAllTinTuc');
 
-Route::get('/dich-vu-chi-tiet.html', function () {
-    return view('frontend.service-details.index');
-});
 
-Route::get('/dich-vu.html', function () {
-    return view('frontend.services.index');
-});
-Route::get('/du-an-chi-tiet.html', function () {
-    return view('frontend.project-details.index');
-});
+Route::get('/tin-tuc/{path}','FrontendController@getTinTucDetail');
+
+Route::get('/du-an.html','FrontendController@getAllDuAn');
+
+Route::get('/dich-vu/{path}', 'FrontendController@getDichVuDetail');
+
+Route::get('/dich-vu.html', 'FrontendController@getAllDichVu');
+//Route::get('/du-an-chi-tiet.html', function () {
+//    return view('frontend.project-details.index');
+//});
+Route::get('/du-an/{path}','FrontendController@getDuAnDetail');
 
 
 Route::post('/tim-kiem','FrontendController@getSearch')->name('search');

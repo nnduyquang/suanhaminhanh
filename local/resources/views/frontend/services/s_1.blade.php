@@ -14,12 +14,9 @@
                         architecto beatae vitae dicta sunt explicabo.
                     </p>
                     <ul>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Sơn nước</a></li>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Sửa nhà giá tốt</a></li>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Chống thấm</a></li>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Trần thạch cao</a></li>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Sửa cửa sắt</a></li>
-                        <li><a href=""><i class="fab fa-gg-circle pr-3"></i>Sửa cửa kính</a></li>
+                        @foreach($data['services'] as $key=>$item)
+                        <li><a href="{{URL::to('dich-vu/'.$item->path)}}"><i class="fab fa-gg-circle pr-3"></i>{{$item->title}}</a></li>
+                        @endforeach
                     </ul>
 
                 </div>
