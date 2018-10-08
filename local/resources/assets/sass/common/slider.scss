@@ -37,12 +37,12 @@
     margin-top: 20px;
     padding: 15px 18px;
     border: none;
-    background-color: #2a2a2a;
+    background-color: $main-color2;
     color: white;
     cursor: pointer;
     transition: .8s;
     &:hover {
-      background-color: $main-color2;
+      background-color: #1b1e21;
     }
   }
 }
