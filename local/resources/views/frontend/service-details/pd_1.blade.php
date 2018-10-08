@@ -39,7 +39,7 @@
                         <div class="img-overlay mr-3">
                             <a href="{{URL::to('dich-vu/'.$item->path)}}">
                                 <div class="img"
-                                     style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/blog/l-news/l-news-1.jpg')}});"></div>
+                                     style="background-image:url({{URL::asset($item->image)}});"></div>
                             </a>
                         </div>
                         <div class="text-left info">

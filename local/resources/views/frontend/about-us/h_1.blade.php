@@ -14,7 +14,7 @@
                     <br>
 
                     <div class="bull-inst wow fadeInRight float-lg-right" style="width: 300px;height: auto">
-                        <img src="{{URL::asset('images/bg/bulldozer.png')}}" alt="" class="">
+                        <img src="{{URL::asset('images/banner/construction-workers.png')}}" alt="" class="">
                     </div>
 
                     <h5>Các dịch vụ sửa chữa của công ty chúng tôi:</h5>

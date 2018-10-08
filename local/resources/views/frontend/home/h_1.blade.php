@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-md-5 bull-inst wow fadeInRight">
-                <img src="{{URL::asset('images/bg/bulldozer.png')}}" alt="" class="">
+                <img src="{{URL::asset('images/banner/construction-workers.png')}}" alt="" class="">
             </div>
         </div>
     </div>

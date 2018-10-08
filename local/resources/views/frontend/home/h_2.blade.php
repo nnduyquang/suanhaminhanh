@@ -32,8 +32,8 @@
 
             <div class="under-line"></div>
 
-            <div class="btn-chitiet pb-5 pt-2">
-                <a href="">XEM DỊCH VỤ</a>
+            <div class="btn-chitiet pb-3 pt-2">
+                <a href="{{URL::asset('dich-vu.html')}}">XEM DỊCH VỤ</a>
             </div>
         </div>
     </div>
