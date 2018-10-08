@@ -12,7 +12,7 @@
                         thương hiệu , chữ Tín trong nghề và tạo nên thương hiệu Minh Ánh.</p>
                     <br>
 
-                    <div class="bull-inst wow fadeInRight float-lg-right" style="width: 320px;height: auto">
+                    <div class="bull-inst wow fadeInRight float-lg-right" style="width: 300px;height: auto">
                         <img src="{{URL::asset('images/bg/bulldozer.png')}}" alt="" class="">
                     </div>
 

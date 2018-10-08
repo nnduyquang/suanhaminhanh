@@ -48,7 +48,7 @@
 
                         <div id="{{$item->id}}" class="tabcontent">
 
-                        <div class="row  right">
+                        <div class="row right">
                             @foreach($item->product as $key2=>$item2)
                                 <div class="col-md-3 text-center items-overlay">
                                     <div class="items wow fadeInUp"
