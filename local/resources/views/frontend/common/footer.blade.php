@@ -19,8 +19,7 @@
                 <div class="col-md-3">
 
                     <img src="{{URL::asset('images/logo/logo-footer.png')}}" alt="">
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque
-                        laudantium. ed quia consequuntur magni dolores eos qui ratione.</p>
+                    <p>Công ty sửa chữa nhà Minh Ánh với độ ngũ nhân viên, kiến trúc sư dày dặn kinh nghiệm, đầy tài năng, sáng tạo và năng động đã và đang thiết kế và hoàn thiện nhiều công trình có chất lượng mang đến cho khách hàng niềm tin tuyệt đối, mỗi sản phẩm của chúng tôi đề là thương hiệu , chữ Tín trong nghề và tạo nên thương hiệu Minh Ánh..</p>
 
 
                 </div>

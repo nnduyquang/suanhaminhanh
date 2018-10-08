@@ -17,13 +17,13 @@
                                      style="background-image:url({{URL::asset($item->image)}});"></div>
                             </a>
                         </div>
-                        <a href="{{URL::asset('tin-tuc-chi-tiet.html')}}">
+                        <a href="{{URL::to('tin-tuc/'.$item->path)}}">
                             <h4>{{$item->title}}</h4></a>
                         <span>{{$item->created_at}}</span>
 
                         <p>{!! $item->description !!}</p>
 
-                        <div class="btn-tintuc mb-5">
+                        <div class="btn-tintuc mb-5 mt-3">
                             <a href="{{URL::to('tin-tuc/'.$item->path)}}">XEM TIN TỨC</a>
                         </div>
                     </div>

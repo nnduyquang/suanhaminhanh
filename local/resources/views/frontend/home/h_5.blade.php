@@ -14,7 +14,7 @@
                         <div class="img-overlay">
                             <a href="{{URL::to('tin-tuc/'.$item->path)}}">
                                 <div class="img"
-                                     style="background-image:url({{URL::asset('https://colorlib.com/preview/theme/webuilder/img/blog/l-news/l-news-1.jpg')}});"></div>
+                                     style="background-image:url({{URL::asset($item->image)}});"></div>
                             </a>
                         </div>
                         <a href=""><h4>{{$item->title}}</h4></a>
@@ -22,7 +22,7 @@
 
                         <p>{!! $item->description !!}</p>
 
-                        <div class="btn-tintuc mb-5">
+                        <div class="btn-tintuc mb-5 mt-3">
                             <a href="{{URL::to('tin-tuc/'.$item->path)}}">XEM TIN TỨC</a>
                         </div>
                     </div>

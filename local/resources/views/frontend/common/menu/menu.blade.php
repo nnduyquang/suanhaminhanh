@@ -22,7 +22,7 @@
                                     <div class="dv-content sub-menu">
                                         <ul>
                                             <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SƠN NƯỚC</a></li>
-                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CHỦA NHÀ</a></li>
+                                            <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CHỮA NHÀ</a></li>
                                             <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">CHỐNG THẤM</a></li>
                                             <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">TRẦN THẠCH CAO</a></li>
                                             <li><a href="{{URL::asset('dich-vu-chi-tiet.html')}}">SỬA CỬA SẮT</a></li>
