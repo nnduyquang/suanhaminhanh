@@ -16,6 +16,9 @@ class FrontendRepository implements FrontendRepositoryInterface
     public function getFrontEndInfo()
     {
         $data = [];
+        $post = new Post();
+        $news = $post->getAllPostByCategoryHasLimit(8, 3);
+        $data['news']=$news;
         return $data;
     }
 

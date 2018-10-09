@@ -27,18 +27,12 @@
                     <h5>
                         TIN TỨC LIÊN QUAN
                     </h5>
+                    @foreach($listFrontEndInfo['news'] as $key=>$item)
                     <div class="blog d-flex align-items-center">
-                        <img src="https://colorlib.com/preview/theme/webuilder/img/blog/recent-post/recent-1.png" alt="">
-                        <a href=""><p>The road to success is always under con-struction</p></a>
+                        <img src="{{URL::to($item->image)}}" alt="">
+                        <a href="{{URL::to('tin-tuc/'.$item->path)}}"><p>{{$item->title}}</p></a>
                     </div>
-                    <div class="blog d-flex align-items-center">
-                        <img src="https://colorlib.com/preview/theme/webuilder/img/blog/recent-post/recent-1.png" alt="">
-                        <a href=""><p>The road to success is always under con-struction</p></a>
-                    </div>
-                    <div class="blog d-flex align-items-center">
-                        <img src="https://colorlib.com/preview/theme/webuilder/img/blog/recent-post/recent-1.png" alt="">
-                        <a href=""><p>The road to success is always under con-struction</p></a>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="col-md-3">
                     <h5>
