@@ -5,6 +5,7 @@ namespace App\Repositories\Frontend;
 
 use App\CategoryItem;
 use App\Config;
+use App\Menu;
 use App\Post;
 use App\Product;
 
@@ -113,6 +114,13 @@ class FrontendRepository implements FrontendRepositoryInterface
         $other = $post->findPostOtherHasTakeAndSort($otherId, $projects->id, 5);
         $data['projects'] = $projects;
         $data['other'] = $other;
+        return $data;
+    }
+
+    public function getAllMenuFrontend()
+    {
+        $menu = new Menu();
+        $data = $menu->getAllParentOrderBy('order');
         return $data;
     }
 

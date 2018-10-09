@@ -20,7 +20,7 @@ Route::get('/tin-tuc/{path}','FrontendController@getTinTucDetail');
 
 Route::get('/du-an.html','FrontendController@getAllDuAn');
 
-Route::get('/dich-vu/{path}', 'FrontendController@getDichVuDetail');
+Route::get('/dich-vu/{path}', 'FrontendController@getDichVuDetail')->name('dichvu.detail');
 
 Route::get('/dich-vu.html', 'FrontendController@getAllDichVu');
 //Route::get('/du-an-chi-tiet.html', function () {
