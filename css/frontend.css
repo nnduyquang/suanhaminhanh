@@ -274,8 +274,8 @@ img {
   transition: left 0.3s ease, -webkit-box-shadow 0.3s ease 0.2s;
   transition: left 0.3s ease, box-shadow 0.3s ease 0.2s;
   transition: left 0.3s ease, box-shadow 0.3s ease 0.2s, -webkit-box-shadow 0.3s ease 0.2s;
-  -webkit-box-shadow: 0.5em 0 0 0 #f2b142, 0.6em 0 0 0 #f2b142;
-  box-shadow: 0.5em 0 0 0 #f2b142, 0.6em 0 0 0 #f2b142;
+  -webkit-box-shadow: 0.5em 0 0 0 #ba0000, 0.6em 0 0 0 #ba0000;
+  box-shadow: 0.5em 0 0 0 #ba0000, 0.6em 0 0 0 #ba0000;
 }
 
 .sidebar.closed {
@@ -349,7 +349,6 @@ img {
 }
 
 .sidebar .background-sidebar {
-  background-image: url(../images/logo/logo_footer.png);
   height: calc(56px*4);
   background-repeat: no-repeat;
   background-size: contain;
