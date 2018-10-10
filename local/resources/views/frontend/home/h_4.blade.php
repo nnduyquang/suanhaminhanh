@@ -7,11 +7,11 @@
                     VỚI CHÚNG TÔI
                 </h5>
 
-                <span>Cùng chúng tôi tô diểm không gian sống của bạn.</span>
+                <span class="text-white">Gọi ngay cho chúng tôi đề cùng chúng tôi tô điểm không gian sống của bạn.</span>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam beatae cumque distinctio
-                    dolore dolorem et, fuga illo magni minus nesciunt, pariatur quas quod, saepe suscipit totam
-                    voluptates? Nemo, nulla?</p>
+                {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam beatae cumque distinctio--}}
+                    {{--dolore dolorem et, fuga illo magni minus nesciunt, pariatur quas quod, saepe suscipit totam--}}
+                    {{--voluptates? Nemo, nulla?</p>--}}
 
                 <div class="btn-call mt-3 mb-4">
                     <a href="">0122 871 0455</a>

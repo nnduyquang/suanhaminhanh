@@ -28,7 +28,7 @@
                         TIN TỨC LIÊN QUAN
                     </h5>
                     @foreach($listFrontEndInfo['news'] as $key=>$item)
-                    <div class="blog d-flex align-items-center">
+                    <div class="blog d-flex align-items-center mb-lg-0 mb-3">
                         <img src="{{URL::to($item->image)}}" alt="">
                         <a href="{{URL::to('tin-tuc/'.$item->path)}}"><p>{{$item->title}}</p></a>
                     </div>

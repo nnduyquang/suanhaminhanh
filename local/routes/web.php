@@ -12,6 +12,10 @@ Route::get('/lien-he.html', function () {
     return view('frontend.contact.index');
 });
 
+Route::get('/bao-gia.html', function () {
+    return view('frontend.baogia.index');
+});
+
 
 Route::get('/tin-tuc.html', 'FrontendController@getAllTinTuc');
 

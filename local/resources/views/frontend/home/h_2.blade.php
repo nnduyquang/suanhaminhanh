@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-7 left"
                  style="background-image:url({{URL::asset('images/bg/service-bg.jpg')}});">
-                <div class="row pl-5 pr-5 m-0">
+                <div class="row pl-lg-5 pr-lg-5 pl-2 pr-2 m-0">
                     @foreach($data['services'] as $key=>$item)
                         <div class="col-md-6">
 
