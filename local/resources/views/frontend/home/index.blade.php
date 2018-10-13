@@ -24,7 +24,7 @@
     @include('frontend.home.h_1')
     @include('frontend.home.h_2')
     {{--@include('frontend.home.h_3')--}}
-    @include('frontend.home.h_6')
+    {{--@include('frontend.home.h_6')--}}
     @include('frontend.home.h_4')
     @include('frontend.home.h_5')
 

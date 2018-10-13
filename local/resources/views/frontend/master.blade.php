@@ -30,10 +30,19 @@
 <div id="blurrMe">
     @include('frontend.common.menu.m-menu')
     @include('frontend.common.menu.menu')
+    @include('frontend.common.popup-callme')
     @yield('slider')
     @yield('container')
 </div>
 @include('frontend.common.menu.m-sidebar')
+<div class="callback call-me-web d-lg-none d-md-none" style="right: -30px;left:inherit">
+    <div class="phone_animation">
+        <div class="phone_animation_circle"></div>
+        <div class="phone_animation_circle_fill"></div>
+        <a href="javascript:void(0)" class="phone_animation_circle_fill_img"><i class="far fa-envelope"
+                                                                                aria-hidden="true"></i></a>
+    </div>
+</div>
 <div class="footer">
     @include('frontend.common.footer')
 </div>
@@ -48,6 +57,8 @@
     });
 
     new WOW().init();
+
+
 </script>
 
 @yield('jv-scripts')
@@ -69,6 +80,10 @@
                                                                             aria-hidden="true"></i></a>
     </div>
 </div>
+
+
+
+
 {{--<div class="mess_desk_bot d-none d-md-block" style="position: fixed;bottom:40px;right: 0px;">--}}
     {{--<a href="tel:0962599482" style="display: block;width: 260px;height: 56px;background: url({{URL::to('images/nenhot.png')}}) no-repeat;text-align: center;padding-top: 10px;color:#fff;font-size: 20px;font-family: 'roboto-bold'">--}}
     {{--</a>--}}

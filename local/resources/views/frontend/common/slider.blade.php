@@ -12,6 +12,7 @@
                     <p class="animated fadeInLeft" style="animation-delay: 300ms">30% off cho tháng 10-2018</p>
                     {{--<p class="animated fadeInLeft" style="animation-delay: 600ms">Quis est tam dissimile homini. Quia dolori non voluptas.</p>--}}
                     <button class="animated fadeIn" style="animation-delay: 1s">XEM CHI TIẾT</button>
+                    {{----}}
                 </div>
             </div>
             <div class="carousel-item" style="background-image:url({{URL::asset('images/slider/banner1.jpg')}});">
