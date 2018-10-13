@@ -1043,7 +1043,8 @@ This class is added to the container
 }
 
 #h_6 {
-  padding: 38px 0px;
+  padding-top: 38px;
+  padding-bottom: 38px;
 }
 
 #h_6 h5 {
