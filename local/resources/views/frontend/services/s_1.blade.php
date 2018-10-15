@@ -9,9 +9,8 @@
                         Chúng tôi mang đến cho bạn giải pháp tối ưu, và tô điểm không gian sống của bạn.
                     </h3>
                     <p class="pr-2">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                        architecto beatae vitae dicta sunt explicabo.
+                       Công ty sửa nhà Minh Ánh mang đến những giải pháp tối ưu cho dịch vụ sửa chửa xây dụng nhà, Chống thấm,
+                        sửa chửa cửa sắt và các hạng mục xây dựng các, chi tiết vui lòng nhấn vào link bên dưới.
                     </p>
                     <ul>
                         @foreach($data['services'] as $key=>$item)
