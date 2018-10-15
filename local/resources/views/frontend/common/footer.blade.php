@@ -42,7 +42,7 @@
                     <div class="d-flex align-items-center">
                         <div class="mr-3"><p><i class="fas fa-phone"></i></p></div>
                         <p>Phone 1 : 0909 353 055 <br>
-                        Phone 2 : 0122 871 0455</p>
+                        Phone 2 : 0968 66 27 38</p>
                     </div>
 
                     <div><p><i class="far fa-envelope pr-3"></i>congtysuanhaminhanh@gmail.com</p></div>
@@ -54,7 +54,7 @@
                         GỌI NGAY CHÚNG TÔI
                     </h5>
 
-                    <h4><span>Line 1 :</span> 0122 871 0455</h4>
+                    <h4><span>Line 1 :</span> 0968 66 27 38</h4>
 
                     <h4><span>Line 2 :</span> 0909 353 055 </h4>
 

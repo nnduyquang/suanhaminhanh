@@ -1386,6 +1386,7 @@ This class is added to the container
 
 #c_1 .right .btn-send {
   padding-top: 30px;
+  background-color: transparent !important;
 }
 
 #c_1 .right .btn-send a {

@@ -82,7 +82,7 @@
 
                         <p>Địa chỉ: 61 Đường số 1, Phường Bình Thuận, Quận 7, TPHCM</p>
 
-                        <p>Điện thoại: 0122 871 0455 - 0909 353 055</p>
+                        <p>Điện thoại: 0968 66 27 38 - 0909 353 055</p>
 
                         <p>E-mail: congtysuachuanhaminhanh@gmail.com</p>
 

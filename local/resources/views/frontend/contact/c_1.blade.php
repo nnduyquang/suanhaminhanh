@@ -30,7 +30,7 @@
                         <li><i class="fas fa-map-marker-alt pr-2"></i>Địa chỉ: 61 Đường số 1, Phường Bình Thuận, Quận 7,
                             TPHCM
                         </li>
-                        <li><i class="fas fa-phone pr-2"></i>Điện thoại: 0122 871 0455 - 0909 353 055</li>
+                        <li><i class="fas fa-phone pr-2"></i>Điện thoại: 0968 66 27 38 - 0909 353 055</li>
                         <li><i class="far fa-envelope pr-2"></i> E-mail: congtysuachuanhaminhanh@gmail.com</li>
                         <li><i class="far fa-file-word pr-2"></i>Website: congtysuachuanhaminhanh.com</li>
                     </ul>
